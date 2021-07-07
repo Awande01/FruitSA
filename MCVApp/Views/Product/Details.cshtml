@@ -1,0 +1,78 @@
+﻿@model  MCVApp.Models.ProductModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Products</h2>
+<div>
+    @Html.ActionLink("Create New", "Create")
+
+    <p></p>
+    <div class="row">
+        <div class="col-md">
+            @using (Html.BeginForm("Search", "Product", FormMethod.Post, new { @class = "table" }))
+            {
+                @Html.DropDownList("Category", Model.Categories, "Please select", new { @class = "dropdown-item" })
+                @Html.ValidationMessageFor(model => model.Categories, "", new { @class = "text-danger" })
+                <input type="submit" value="Search" class="btn btn-outline-info" />
+            }
+        </div>
+    </div>
+
+
+</div>
+<p></p>
+<table class="table">
+    <tr>
+        <th>
+            ProductId
+        </th>
+        <th>
+            ProductCode
+        </th>
+        <th>
+            ProductName
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Image
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { ProductId = item.ProductId, ProductCode = item.ProductCode, ProductName = item.ProductName, Price = item.Price, Description = item.Description, }) |
+                @Html.ActionLink("Details", "View", new { ProductId = item.ProductId }) |
+                @Html.ActionLink("Delete", "Delete", new { ProductId = item.ProductId })
+            </td>
+        </tr>
+    }
+</table>
+<p>
+
+</p>

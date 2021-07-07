@@ -1,0 +1,35 @@
+﻿@model WebApp.Models.CategoryModel
+
+<div>
+    <h4>Category Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("<<<<Back to List", "GetAllCategoryDetails")
+</p>
